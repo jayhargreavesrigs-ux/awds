@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axis Well Delivery Systems Ltd</title>
+  <meta name="description"
+    content="Axis Well Delivery Systems Ltd — integrated well delivery, drilling engineering, completions, intervention, production optimization, and field development planning." />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div id="scrollGauge" aria-hidden="true"></div>
+
+  <header class="site-header" id="header">
+    <div class="header-inner">
+      <a class="brand" href="#hero" aria-label="Axis Well Delivery Systems Ltd home">
+        <img src="/assets/logo.png" alt="Axis Well Delivery Systems Ltd Logo" class="logo" />
+        <div class="brand-copy">
+          <strong>AXIS WELL DELIVERY SYSTEMS LTD</strong>
+          <span>Integrated Well Delivery</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <nav class="site-nav" id="siteNav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#model">Delivery Model</a>
+        <a href="#execution">Execution</a>
+        <a href="#cases">Case Studies</a>
+        <a href="#performance">Performance</a>
+        <a href="#why">Why Axis</a>
+        <a href="#contact">Contact</a>
+        <a href="/assets/catlouge.pdf" download class="nav-download">
+          <i class="fa-solid fa-file-pdf"></i> Catalogue
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero" class="hero section reveal">
+      <div class="hero-content">
+        <div class="eyebrow"><i class="fa-solid fa-industry"></i> Engineered Right, Creating Value</div>
+        <h1>Integrated Well Delivery for Nigeria, West Africa, and Beyond</h1>
+        <p>
+          Axis Well Delivery Systems Ltd delivers turnkey well engineering, drilling, completions,
+          intervention, field development planning, and production optimization across the full well lifecycle.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Contact Axis</a>
+          <a class="btn btn-secondary" href="#cases">View Case Studies</a>
+        </div>
+
+        <div class="hero-stats">
+          <article class="stat-card">
+            <span class="stat-value">20+</span>
+            <span class="stat-label">Years Experience</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value">5</span>
+            <span class="stat-label">Core Service Lines</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value">2</span>
+            <span class="stat-label">Countries in FDP Delivery</span>
+          </article>
+          <article class="stat-card">
+            <span class="stat-value">Goal Zero</span>
+            <span class="stat-label">HSSE Philosophy</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-building"></i> About Us</span>
+        <h2>Deep local insight, globally benchmarked execution</h2>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <p>
+            Axis Well Delivery Systems Ltd is a premier indigenous oilfield services company delivering
+            integrated, turnkey solutions to Nigeria’s upstream petroleum industry. Headquartered in Nigeria,
+            we specialize in bridging the gap between complex subsurface challenges and efficient, reliable
+            production outcomes.
+          </p>
+          <p>
+            Our capabilities span the full well lifecycle — from drilling engineering and well construction
+            to completions, intervention, and production optimization. Through our integrated delivery model,
+            we enable operators to streamline vendor interfaces, reduce operational risk, and achieve
+            cost-efficient well execution.
+          </p>
+          <p>
+            Axis is uniquely positioned to support the evolving Nigerian upstream landscape, with a strong
+            focus on brownfield revitalization and marginal field development. By combining deep local
+            operational insight with global engineering standards, we consistently deliver fit-for-purpose
+            solutions that unlock reservoir value and accelerate time to first oil.
+          </p>
+
+          <blockquote>
+            “We do not just deliver wells — we deliver producing assets, operational confidence,
+            and long-term value creation.”
+          </blockquote>
+        </article>
+
+        <article class="panel accent-panel">
+          <h3>Vision</h3>
+          <p>
+            To be the foremost indigenous partner of choice in Africa, redefining excellence in integrated
+            well delivery and sustainable asset optimization.
+          </p>
+
+          <h3>Mission</h3>
+          <p>
+            To deliver superior value to upstream operators by providing innovative, end-to-end well
+            engineering and production solutions. We are committed to maximizing the potential of marginal
+            and brownfield assets through technical precision, operational safety, and a deep-rooted
+            understanding of the African energy landscape.
+          </p>
+
+          <h3>Our Promise</h3>
+          <p>
+            To deliver wells safely, efficiently, and profitably — transforming subsurface potential into
+            sustainable production.
+          </p>
+        </article>
+      </div>
+
+      <div class="grid cards-5">
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-globe"></i>
+          <h3>Local Insight, Global Standards</h3>
+          <p>Indigenous operational intelligence combined with internationally benchmarked practices.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-shield-halved"></i>
+          <h3>Operational Integrity</h3>
+          <p>Goal Zero philosophy embedded into HSSE, risk management, and process discipline.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-chart-line"></i>
+          <h3>Asset Maximization</h3>
+          <p>Completion strategies, intervention planning, and production uplift focused on value.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-gears"></i>
+          <h3>Integrated Execution</h3>
+          <p>Reduced interface risk and seamless execution from planning through production.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-coins"></i>
+          <h3>Cost Efficiency</h3>
+          <p>Lean structures, optimized workflows, and proactive NPT management.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="services" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-screwdriver-wrench"></i> Our Services</span>
+        <h2>Comprehensive well lifecycle solutions</h2>
+      </div>
+
+      <div class="panel">
+        <p>
+          We provide comprehensive well lifecycle solutions, combining technical excellence with operational
+          efficiency to deliver measurable results for our clients across Nigeria’s upstream sector.
+        </p>
+      </div>
+
+      <div class="service-flow">
+        <div class="flow-step"><span>Planning</span><strong>Well Design & AFE</strong></div>
+        <div class="flow-step"><span>Execution</span><strong>Drilling & Completion</strong></div>
+        <div class="flow-step"><span>Activation</span><strong>Production Start</strong></div>
+        <div class="flow-step"><span>Optimization</span><strong>Lifecycle Management</strong></div>
+      </div>
+
+      <div class="grid cards-5">
+        <article class="service-card reveal-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <h3>Integrated Well Delivery</h3>
+          <p>Full lifecycle delivery, vendor coordination, cost tracking, and risk management.</p>
+        </article>
+        <article class="service-card reveal-item">
+          <i class="fa-solid fa-ruler-combined"></i>
+          <h3>Drilling Engineering</h3>
+          <p>Well design, torque & drag modeling, hydraulics optimization, and DWOP support.</p>
+        </article>
+        <article class="service-card reveal-item">
+          <i class="fa-solid fa-oil-well"></i>
+          <h3>Completions & Sand Control</h3>
+          <p>Gravel pack, frac pack, tubing design, and artificial lift systems.</p>
+        </article>
+        <article class="service-card reveal-item">
+          <i class="fa-solid fa-wrench"></i>
+          <h3>Well Intervention</h3>
+          <p>Slickline, electric line, coiled tubing, diagnostics, and remediation.</p>
+        </article>
+        <article class="service-card reveal-item">
+          <i class="fa-solid fa-chart-pie"></i>
+          <h3>Production Optimization</h3>
+          <p>IPR/VLP modeling, monitoring, facility integration, and uplift planning.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="model" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-diagram-project"></i> Turnkey Delivery Model</span>
+        <h2>Four phases from de-risking to sustained production</h2>
+      </div>
+
+      <div class="panel">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Objective</th>
+              <th>Timeline Focus</th>
+              <th>Key Deliverables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>I. Engineering</td>
+              <td>De-risking the asset</td>
+              <td>Pre-spud</td>
+              <td>Well trajectory & casing design, geomechanics, AFE optimization, DWOP facilitation</td>
+            </tr>
+            <tr>
+              <td>II. Execution</td>
+              <td>Operational precision</td>
+              <td>Drilling & completion</td>
+              <td>Rig/service integration, real-time NPT management, dual-string/gravel pack completions</td>
+            </tr>
+            <tr>
+              <td>III. Activation</td>
+              <td>Production readiness</td>
+              <td>Post-completion</td>
+              <td>Engineered unloading (N₂ kick-off), artificial lift readiness, surface tie-in</td>
+            </tr>
+            <tr>
+              <td>IV. Lifecycle</td>
+              <td>Asset optimization</td>
+              <td>Ongoing</td>
+              <td>Continuous monitoring, sand control performance, intervention planning</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid cards-4">
+        <article class="mini-card reveal-item">
+          <i class="fa-solid fa-compass-drafting"></i>
+          <h3>Engineering</h3>
+          <p>Trajectory, casing, geomechanics, and AFE.</p>
+        </article>
+        <article class="mini-card reveal-item">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <h3>Execution</h3>
+          <p>Rig integration, completion delivery, and NPT control.</p>
+        </article>
+        <article class="mini-card reveal-item">
+          <i class="fa-solid fa-bolt"></i>
+          <h3>Activation</h3>
+          <p>Well unloading, lift readiness, and surface tie-in.</p>
+        </article>
+        <article class="mini-card reveal-item">
+          <i class="fa-solid fa-arrows-rotate"></i>
+          <h3>Optimization</h3>
+          <p>Monitoring, intervention, and production sustainment.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="execution" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-brain"></i> Execution Intelligence</span>
+        <h2>Operational mastery with integrated control</h2>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <ul class="feature-list">
+            <li><strong>Operational Mastery:</strong> Proven leadership in the complex Niger Delta terrain across land,
+              swamp, and offshore.</li>
+            <li><strong>Integrated Control:</strong> Single-point accountability for third-party vendors such as SLB and
+              Weatherford.</li>
+            <li><strong>Regulatory & Community Synergy:</strong> Deep alignment with NUPRC standards and local security
+              frameworks.</li>
+            <li><strong>Digital Integration:</strong> Future-ready operations using Softedge Analytics Borestack™ for
+              data-driven decision making.</li>
+          </ul>
+        </article>
+
+        <article class="panel quote-panel">
+          <blockquote>
+            “We don’t just supervise wells. We design, execute, and deliver producing assets.”
+          </blockquote>
+        </article>
+      </div>
+    </section>
+
+    <section id="cases" class="section">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-flask"></i> Case Studies</span>
+        <h2>Selected delivery and engineering highlights</h2>
+      </div>
+
+      <article class="case-card reveal-item">
+        <header class="case-head">
+          <h3>Emohua Field</h3>
+          <span>Land Asset — Dual-String Completion</span>
+        </header>
+
+        <p><strong>Project Objective:</strong> Maximize reservoir recovery and data acquisition through a dual-string
+          completion strategy across multiple zones in a legacy field environment.</p>
+
+        <p><strong>Engineering Scope Delivered:</strong> Re-entry planning for a 1979 legacy well, new well drilling
+          (Emohua-2), dual-string completion design with Long String and Short String, gravel pack sand control, and
+          full production system readiness.</p>
+
+        <div class="two-col compact">
+          <div class="mini-panel">
+            <h4>Key Challenges</h4>
+            <ul class="simple-list">
+              <li>Legacy well uncertainty</li>
+              <li>Sand production risk</li>
+              <li>Completion integrity across dual zones</li>
+              <li>Multi-vendor coordination complexity</li>
+            </ul>
+          </div>
+          <div class="mini-panel">
+            <h4>Axis Solutions</h4>
+            <ul class="simple-list">
+              <li>Comprehensive re-entry assessment with contingency planning</li>
+              <li>Formation-tailored gravel pack design with QA/QC</li>
+              <li>Engineered dual-string completion architecture</li>
+              <li>Structured DWOP-driven execution with tight SLB/Weatherford integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <h4>Results</h4>
+        <ul class="simple-list">
+          <li>Successful well delivery across both Long String and Short String zones</li>
+          <li>Multi-zone reservoir access achieved with controlled sand production</li>
+          <li>Full well lifecycle execution capability demonstrated in Niger Delta conditions</li>
+        </ul>
+
+        <div class="image-grid">
+          <figure>
+            <img src="/assets/emohua.png" alt="Emohua Field location redesign and preparation" />
+            <figcaption>Location Redesign and Preparation</figcaption>
+          </figure>
+          <figure>
+            <img src="/assets/emohua2.png" alt="Emohua Field rig inspection and selection" />
+            <figcaption>Rig Inspections & Selection</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <article class="case-card reveal-item">
+        <header class="case-head">
+          <h3>Kuri Field (PPL 222)</h3>
+          <span>Swamp Asset — Heavy Oil Production Activation</span>
+        </header>
+
+        <p><strong>Project Overview:</strong> Kuri-2 required re-entry and production activation in a swamp environment.
+          The heavy oil reservoir and completion fluid presented unique flow-initiation challenges requiring an
+          engineered unloading approach.</p>
+
+        <h4>Axis Unloading Strategy</h4>
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Step</th>
+              <th>Phase</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Fluid Displacement</td>
+              <td>Controlled displacement to avoid formation damage while clearing completion fluid</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Nitrogen Lifting</td>
+              <td>N₂ kick-off to initiate flow in heavy oil column</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Pressure Drawdown</td>
+              <td>Gradual drawdown to establish stable inflow without sand failure</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Flowback Monitoring</td>
+              <td>Real-time monitoring of rates, pressures, and fluid properties</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Well Test Stabilization</td>
+              <td>Sustained flow period to confirm reservoir deliverability and fluid characterization</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Results</h4>
+        <ul class="simple-list">
+          <li>Safe unloading approach defined and executed with a structured 15-day cleanup plan</li>
+          <li>Controlled transition to production phase with heavy oil handling capability demonstrated</li>
+          <li>Integrated CTU + Nitrogen services with marine and security coordination</li>
+        </ul>
+
+        <blockquote class="inline-quote">“Axis has unlocked difficult wells and converted them into producing assets.”
+        </blockquote>
+
+        <figure class="single-image">
+          <img src="/assets/kuri.png" alt="Kuri field extended well test" />
+          <figcaption>Extended Well Test (Swamp + Land Assets)</figcaption>
+        </figure>
+      </article>
+
+      <article class="case-card reveal-item">
+        <header class="case-head">
+          <h3>Field Development Planning</h3>
+          <span>Nigeria & Republic of Congo</span>
+        </header>
+
+        <p>
+          Beyond well-level execution, Axis provides full-scope Field Development Planning services that
+          translate subsurface data into bankable, executable development strategies.
+        </p>
+
+        <div class="two-col compact">
+          <div class="mini-panel">
+            <h4>Petrokinetics Energy — Nigeria</h4>
+            <p>Marginal field FDP delivered with reservoir characterization, trajectory planning, completion design,
+              production forecasting, and cost build-up.</p>
+            <ul class="simple-list">
+              <li>NUPRC-compliant FDP delivered on schedule</li>
+              <li>Multiple development scenarios and economic comparisons</li>
+              <li>Phased development approach recommended</li>
+              <li>Sand control strategy engineered from offset well data</li>
+              <li>Investor-ready presentation package structured</li>
+            </ul>
+            <blockquote class="inline-quote">“Axis transformed Petrokinetics’ subsurface data into an investment-ready
+              development roadmap.”</blockquote>
+          </div>
+
+          <div class="mini-panel">
+            <h4>Olive Energy — Republic of Congo</h4>
+            <p>Cross-border FDP and well engineering delivered for onshore assets, using Niger Delta expertise adapted
+              to Congo basin geology.</p>
+            <ul class="simple-list">
+              <li>Reservoir review and resource assessment</li>
+              <li>Trajectory, casing, and hazard planning</li>
+              <li>Completion and sand management strategy</li>
+              <li>Facility concept and economic modelling</li>
+              <li>Execution schedule aligned with local logistics and regulatory timelines</li>
+            </ul>
+            <blockquote class="inline-quote">“Axis’s readiness to serve as a pan-African well delivery partner brings
+              Niger Delta expertise to new frontiers.”</blockquote>
+          </div>
+        </div>
+      </article>
+
+      <article class="case-card reveal-item">
+        <header class="case-head">
+          <h3>Rig Inspections & Selection</h3>
+          <span>Verification before mobilization</span>
+        </header>
+
+        <p>
+          Axis conducts rigorous independent rig inspections to verify mechanical integrity, equipment suitability,
+          and regulatory compliance before any mobilization commitment.
+        </p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Rig Name</th>
+              <th>Type / Spec</th>
+              <th>Location</th>
+              <th>Client</th>
+              <th>Outcome</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>Jewel Quest</td>
+              <td>Swamp Barge 3000HP / 10K</td>
+              <td>New Iberia, Louisiana, USA</td>
+              <td>Platform Petroleum Ltd</td>
+              <td>Inspected for swamp operations capability</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Acme Rig 7</td>
+              <td>Land Rig 2000HP</td>
+              <td>Conroe, Texas, USA</td>
+              <td>EOP Energy Resources Ltd</td>
+              <td>Inspected for Nigeria land drilling campaign</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Melcurt Rig 1</td>
+              <td>Land Rig</td>
+              <td>Okpaka, Delta State, Nigeria</td>
+              <td>EOP Energy Resources Ltd</td>
+              <td>Selected — used for Emohua-1 re-entry</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>MF101 (Matpatson)</td>
+              <td>Land Rig</td>
+              <td>NPA Port Harcourt, Nigeria</td>
+              <td>EOP Energy Resources Ltd</td>
+              <td>Selected — used for Emohua-2 & 2 ST</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Acme Rig 5</td>
+              <td>Land Rig</td>
+              <td>Maiduguri, Nigeria</td>
+              <td>EOP Energy Resources Ltd</td>
+              <td>Inspected for Northeast operations</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="two-col compact">
+          <div class="mini-panel">
+            <h4>Capability Summary</h4>
+            <p>
+              Across five inspections spanning the United States and Nigeria, Axis demonstrated the breadth
+              and depth of our rig assessment capability. Two inspected rigs were ultimately selected and
+              used to successfully execute the Emohua field drilling campaign.
+            </p>
+          </div>
+          <div class="mini-panel">
+            <h4>Validation</h4>
+            <ul class="simple-list">
+              <li>Five rigs inspected across four locations in two countries</li>
+              <li>Swamp barge and land rig configurations assessed</li>
+              <li>Two inspected rigs selected and deployed</li>
+              <li>Inspection methodology validated by zero rig-related NPT on subsequent operations</li>
+            </ul>
+          </div>
+        </div>
+
+        <blockquote class="inline-quote">“Axis doesn’t just select rigs — we verify them. Our inspection rigor ensures
+          operational readiness before a single dollar is committed to mobilization.”</blockquote>
+      </article>
+
+      <article class="case-card reveal-item">
+        <header class="case-head">
+          <h3>Ede E&P Ltd — Ede-4 Well Engineering</h3>
+          <span>Offshore Marginal Field — Multi-Zone Development Well</span>
+        </header>
+
+        <p>
+          Ede-4 is a technically demanding multi-zone well designed to penetrate and complete three reservoir
+          zones, with the deep zone presenting significant overpressure challenges requiring a robust barrier
+          philosophy.
+        </p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Engineering Discipline</th>
+              <th>Deliverables</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Well Architecture & Casing Design</td>
+              <td>Conductor/surface, 9⅝″ intermediate, 7″ production liner, full section sizing</td>
+            </tr>
+            <tr>
+              <td>Casing & Tubing Engineering</td>
+              <td>Load case design, burst/collapse/tension/triaxial checks</td>
+            </tr>
+            <tr>
+              <td>Torque & Drag Analysis</td>
+              <td>Rotating liner while cementing with friction factor sensitivity and torque cap</td>
+            </tr>
+            <tr>
+              <td>Cementing Programme</td>
+              <td>15.8 ppg slurry design, ~217 bbl, rotation during cementing, spacer optimization</td>
+            </tr>
+            <tr>
+              <td>Completion Strategy</td>
+              <td>Dual-string architecture with long string and short string completion</td>
+            </tr>
+            <tr>
+              <td>Barrier Philosophy</td>
+              <td>Overpressure barrier design with two barrier modes and verification protocols</td>
+            </tr>
+            <tr>
+              <td>Trajectory & Targeting</td>
+              <td>Directional well with kickoff, landing, and TVD/MD mapping</td>
+            </tr>
+            <tr>
+              <td>Risk Register</td>
+              <td>Stuck pipe, poor cement, pressure control failure, torque exceedance, annular pressure build-up</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Technical Highlights</h4>
+        <div class="two-col compact">
+          <div class="mini-panel">
+            <h5>Overpressured Deep Zone (A6)</h5>
+            <p>
+              The A6 reservoir governs the burst envelope and requires heavy CaBr₂ completion brine with
+              defined barrier modes, pressure tests, leak-off validation, SCSSV functional tests, and annulus
+              monitoring.
+            </p>
+          </div>
+          <div class="mini-panel">
+            <h5>Liner Rotation While Cementing</h5>
+            <p>
+              Detailed torque and drag analysis confirmed feasibility with VAM TOP HT connections and an
+              80% surface torque cap policy with real-time monitoring.
+            </p>
+          </div>
+        </div>
+
+        <blockquote class="inline-quote">
+          “Ede-4 demonstrates Axis’s ability to deliver execution-ready well engineering for complex,
+          multi-zone offshore development wells.”
+        </blockquote>
+      </article>
+    </section>
+
+    <section id="performance" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-gauge-high"></i> Cost, NPT & Commercial Value</span>
+        <h2>Measured delivery with disciplined cost control</h2>
+      </div>
+
+      <div class="two-col">
+        <article class="panel">
+          <h3>Cost & NPT Management Framework</h3>
+          <blockquote>“We eliminate waste to accelerate your ROI.”</blockquote>
+          <p>
+            Axis employs a rigorous cost and non-productive time management framework designed to deliver wells
+            on budget and ahead of schedule. Our approach combines proactive planning, real-time decision
+            authority, and vendor accountability to minimize waste and maximize operational efficiency.
+          </p>
+
+          <h4>NPT Reduction Strategy</h4>
+          <ul class="feature-list">
+            <li>Pre-job DWOP alignment ensures all parties are synchronized before operations begin.</li>
+            <li>Real-time decision authority at the rig site eliminates delays waiting for remote approvals.</li>
+            <li>Vendor accountability structure with KPIs and performance incentives.</li>
+          </ul>
+
+          <h4>Stuck Pipe Contingency</h4>
+          <ul class="feature-list">
+            <li>Pre-defined fishing strategy with decision trees documented in every well program.</li>
+            <li>Torque & drag modeling to predict and prevent stuck pipe scenarios.</li>
+            <li>Contingency tools on standby: fishing jars, bumper subs, and overshots pre-mobilized.</li>
+          </ul>
+
+          <h4>Sand Control Assurance</h4>
+          <ul class="feature-list">
+            <li>Formation-specific gravel pack design based on sieve analysis and core data.</li>
+            <li>QA/QC on installation with real-time pump rate and pressure monitoring.</li>
+            <li>Post-completion monitoring to verify screen and gravel pack integrity.</li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <h3>AFE Tracking & Commercial Value</h3>
+          <p>
+            Our disciplined AFE management consistently delivers wells below budget. The following
+            framework demonstrates cost tracking and variance management.
+          </p>
+
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Cost Element</th>
+                <th>AFE Budget</th>
+                <th>Actual</th>
+                <th>Variance</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Rig & Spread</td>
+                <td>$2,800,000</td>
+                <td>$2,650,000</td>
+                <td>-5.4%</td>
+              </tr>
+              <tr>
+                <td>Drilling Services</td>
+                <td>$1,500,000</td>
+                <td>$1,420,000</td>
+                <td>-5.3%</td>
+              </tr>
+              <tr>
+                <td>Completion Equipment</td>
+                <td>$1,200,000</td>
+                <td>$1,180,000</td>
+                <td>-1.7%</td>
+              </tr>
+              <tr>
+                <td>Logistics & Marine</td>
+                <td>$600,000</td>
+                <td>$580,000</td>
+                <td>-3.3%</td>
+              </tr>
+              <tr>
+                <td>Contingency (10%)</td>
+                <td>$610,000</td>
+                <td>$120,000</td>
+                <td>-80.3%</td>
+              </tr>
+              <tr class="total-row">
+                <td>TOTAL</td>
+                <td>$6,710,000</td>
+                <td>$5,950,000</td>
+                <td>-11.3%</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p class="center-note">Typical Savings: 10–15% Below AFE</p>
+        </article>
+      </div>
+
+      <div class="chart-grid">
+        <article class="panel chart-panel">
+          <h3>AFE Budget vs Actual</h3>
+          <canvas id="afeChart" height="220"></canvas>
+        </article>
+
+        <article class="panel chart-panel">
+          <h3>AFE Cost Mix</h3>
+          <canvas id="costMixChart" height="220"></canvas>
+        </article>
+
+        <article class="panel chart-panel">
+          <h3>NPT Reduction Emphasis</h3>
+          <canvas id="nptChart" height="220"></canvas>
+        </article>
+      </div>
+    </section>
+
+    <section id="why" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-star"></i> Why Choose Axis</span>
+        <h2>Your trusted partner from concept to production</h2>
+      </div>
+
+      <div class="grid cards-5">
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <h3>20+ Years Experience</h3>
+          <p>Proven leadership in Niger Delta operations across land, swamp, and offshore environments.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-badge-check"></i>
+          <h3>Proven Track Record</h3>
+          <p>Execution across Emohua, Kuri, and Ede demonstrates versatility across Nigerian terrains.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-scale-balanced"></i>
+          <h3>Regulatory Excellence</h3>
+          <p>Strong interface with NUPRC, host communities, and local security frameworks.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-sitemap"></i>
+          <h3>Turnkey for Marginals</h3>
+          <p>Complete well delivery capability from award to first oil as an integrated technical partner.</p>
+        </article>
+        <article class="info-card reveal-item">
+          <i class="fa-solid fa-robot"></i>
+          <h3>Digital Integration</h3>
+          <p>Integration-ready with digital oilfield platforms for real-time decision making and tracking.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" class="section reveal">
+      <div class="section-heading">
+        <span class="section-kicker"><i class="fa-solid fa-envelope"></i> Contact Us</span>
+        <h2>Partner with Axis to transform subsurface potential into producing assets</h2>
+      </div>
+
+      <div class="contact-grid">
+        <article class="panel contact-panel">
+          <h3>Operational Office / Yard</h3>
+          <p>3 Ekpeli Drive, Trans-Amadi, Port Harcourt, Rivers State</p>
+          <p><i class="fa-solid fa-user"></i> Usman Mbaekwe</p>
+          <p><i class="fa-solid fa-phone"></i> 0703 541 7549</p>
+          <p><i class="fa-solid fa-envelope"></i> umbaekwe@axiswelldelivery.com</p>
+        </article>
+
+        <article class="panel contact-panel">
+          <h3>Well Engineering Design Studio</h3>
+          <p>1 General Ogomudia Blvd, Lekki 1, Lagos</p>
+          <p><i class="fa-solid fa-user"></i> Roger McCollin</p>
+          <p><i class="fa-solid fa-phone"></i> 0903 839 2772</p>
+          <p><i class="fa-solid fa-envelope"></i> rmccollin@axiswelldelivery.com</p>
+        </article>
+
+        <form id="contactForm" class="panel contact-form">
+          <h3>Send a message</h3>
+          <div class="form-grid">
+            <label>
+              <span>Name</span>
+              <input type="text" id="name" name="name" placeholder="Your full name" required />
+            </label>
+            <label>
+              <span>Email</span>
+              <input type="email" id="email" name="email" placeholder="Your email address" required />
+            </label>
+          </div>
+
+          <label>
+            <span>Subject</span>
+            <input type="text" id="subject" name="subject" placeholder="Subject" required />
+          </label>
+
+          <label>
+            <span>Message</span>
+            <textarea id="message" name="message" rows="6" placeholder="Your message" required></textarea>
+          </label>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+
+          <p class="form-note">
+            This form is wired for a backend mail endpoint or a service such as EmailJS. Replace the endpoint in
+            <code>script.js</code> with your mail workflow.
+          </p>
+          <div id="formStatus" class="form-status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© Axis Well Delivery Systems Ltd</p>
+    <p>Engineered Right, Creating Value</p>
+    <p>Transforming subsurface potential into producing assets — safely, efficiently, and profitably.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
