@@ -1,98 +1,53 @@
-// // SCROLL GAUGE
-// window.onscroll = () => {
-//   let scrollTop = document.documentElement.scrollTop;
-//   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-//   let scrolled = (scrollTop / height) * 100;
-//   document.getElementById("scrollGauge").style.width = scrolled + "%";
-// };
-
-// // CONTACT FORM (EMAILJS READY)
-// document.getElementById("contactForm").addEventListener("submit", function(e) {
-//   e.preventDefault();
-
-//   let name = document.getElementById("name").value;
-//   let email = document.getElementById("email").value;
-//   let message = document.getElementById("message").value;
-
-//   // OPTION 1: EmailJS (RECOMMENDED)
-//   /*
-//   emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
-//     from_name: name,
-//     from_email: email,
-//     message: message
-//   }).then(() => {
-//     alert("Message sent successfully!");
-//   }, (err) => {
-//     alert("Failed to send message.");
-//   });
-//   */
-
-//   // TEMPORARY (TEST)
-//   alert("Message sent (demo only). Integrate EmailJS or backend.");
-// });
-
-
-
-// // SCROLL GAUGE
-// window.addEventListener("scroll", () => {
-//   let scrollTop = document.documentElement.scrollTop;
-//   let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-//   document.getElementById("scrollGauge").style.width =
-//     (scrollTop / height) * 100 + "%";
-// });
-
-// // SCROLL REVEAL
-// const reveals = document.querySelectorAll(".reveal");
-
-// window.addEventListener("scroll", () => {
-//   reveals.forEach(el => {
-//     let top = el.getBoundingClientRect().top;
-//     if (top < window.innerHeight - 100) {
-//       el.classList.add("active");
-//     }
-//   });
-// });
-
-// // NAV ACTIVE LINK
-// const sections = document.querySelectorAll("section");
-// const navLinks = document.querySelectorAll("nav a");
-
-// window.addEventListener("scroll", () => {
-//   let current = "";
-
-//   sections.forEach(section => {
-//     let sectionTop = section.offsetTop;
-//     if (scrollY >= sectionTop - 200) {
-//       current = section.getAttribute("id");
-//     }
-//   });
-
-//   navLinks.forEach(link => {
-//     link.classList.remove("active");
-//     if (link.getAttribute("href") === "#" + current) {
-//       link.classList.add("active");
-//     }
-//   });
-// });
-
-// // CONTACT FORM
-// document.getElementById("contactForm").addEventListener("submit", function(e) {
-//   e.preventDefault();
-//   alert("Integrate EmailJS or backend to send message.");
-// });
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const scrollGauge = document.getElementById("scrollGauge");
+  const backToTop = document.getElementById("backToTop");
   const sections = document.querySelectorAll("main section[id]");
-  const navLinks = document.querySelectorAll(".site-nav a");
+  const navLinks = document.querySelectorAll(".site-nav a[href^='#']");
   const revealEls = document.querySelectorAll(".reveal, .reveal-item");
   const navToggle = document.getElementById("navToggle");
   const siteNav = document.getElementById("siteNav");
+
   const contactForm = document.getElementById("contactForm");
   const formStatus = document.getElementById("formStatus");
+  const contactSubmitBtn = document.getElementById("contactSubmitBtn");
+
+  const toast = document.getElementById("toast");
+  const toastIcon = document.getElementById("toastIcon");
+  const toastMessage = document.getElementById("toastMessage");
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
+  const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
+  const EMAILJS_PUBLIC_KEY = "YOUR_PUBLIC_KEY";
+
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+
+  const animateCountUp = (el, target) => {
+    if (!el || el.dataset.counted === "true") return;
+
+    const duration = 1300;
+    const start = 0;
+    const startTime = performance.now();
+
+    const step = (now) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const value = Math.floor(start + (target - start) * easeOutCubic(progress));
+      el.textContent = value >= 100 ? `${value}+` : `${value}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.dataset.counted = "true";
+      }
+    };
+
+    requestAnimationFrame(step);
+  };
 
   const updateScrollGauge = () => {
+    if (!scrollGauge) return;
+
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
     const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const progress = height > 0 ? (scrollTop / height) * 100 : 0;
@@ -100,53 +55,77 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const setActiveNav = () => {
-    let currentId = "";
+  const navSectionIds = Array.from(navLinks)
+    .map((link) => link.getAttribute("href"))
+    .filter((href) => href && href.startsWith("#"))
+    .map((href) => href.slice(1));
 
-    sections.forEach((section) => {
-      const top = section.offsetTop - 120;
-      if (window.scrollY >= top) currentId = section.id;
-    });
+  let currentId = navSectionIds[0] || "";
 
-    navLinks.forEach((link) => {
-      const isActive = link.getAttribute("href") === `#${currentId}`;
-      link.classList.toggle("active", isActive);
-    });
-  };
+  navSectionIds.forEach((id) => {
+    const section = document.getElementById(id);
+    if (!section) return;
+
+    const top = section.offsetTop - 140;
+    if (window.scrollY >= top) {
+      currentId = id;
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.toggle("active", link.getAttribute("href") === `#${currentId}`);
+  });
+};
+
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
+        if (!entry.isIntersecting) return;
+
+        entry.target.classList.add("visible");
+
+        const counters = entry.target.querySelectorAll("[data-count]");
+        counters.forEach((counter) => {
+          const target = Number(counter.dataset.count || "0");
+          animateCountUp(counter, target);
+        });
       });
     },
     { threshold: 0.14 }
   );
-  
 
   revealEls.forEach((el) => observer.observe(el));
 
+  const smoothScrollTo = (target) => {
+    const offset = 84;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  };
+
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
-      const target = document.querySelector(link.getAttribute("href"));
+      const href = link.getAttribute("href");
+      if (!href || !href.startsWith("#")) return;
+
+      const target = document.querySelector(href);
       if (!target) return;
 
       e.preventDefault();
-      const offset = 84;
-      const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      smoothScrollTo(target);
 
-      window.scrollTo({
-        top,
-        behavior: "smooth",
-      });
-
-      siteNav.classList.remove("open");
-      navToggle.setAttribute("aria-expanded", "false");
-      navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
+      siteNav?.classList.remove("open");
+      navToggle?.setAttribute("aria-expanded", "false");
+      if (navToggle) navToggle.innerHTML = '<i class="fa-solid fa-bars"></i>';
     });
   });
 
-  navToggle.addEventListener("click", () => {
-    const expanded = siteNav.classList.toggle("open");
+  navToggle?.addEventListener("click", () => {
+    const expanded = siteNav?.classList.toggle("open") ?? false;
     navToggle.setAttribute("aria-expanded", String(expanded));
     navToggle.innerHTML = expanded
       ? '<i class="fa-solid fa-xmark"></i>'
@@ -156,12 +135,120 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", () => {
     updateScrollGauge();
     setActiveNav();
+
+    if (backToTop) {
+      backToTop.classList.toggle("show", window.scrollY > 500);
+    }
   });
 
   window.addEventListener("resize", updateScrollGauge);
-
   updateScrollGauge();
   setActiveNav();
+
+  backToTop?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  });
+
+  const carouselRoot = document.querySelector("[data-carousel]");
+  if (carouselRoot) {
+    const track = carouselRoot.querySelector(".carousel-track");
+    const slides = Array.from(carouselRoot.querySelectorAll(".carousel-slide"));
+    const prevBtn = carouselRoot.querySelector(".carousel-btn.prev");
+    const nextBtn = carouselRoot.querySelector(".carousel-btn.next");
+    const dotsWrap = carouselRoot.querySelector(".carousel-dots");
+
+    let index = 0;
+    let timer = null;
+
+    const updateCarousel = () => {
+      if (!track) return;
+
+      track.style.transform = `translateX(-${index * 100}%)`;
+
+      if (dotsWrap) {
+        [...dotsWrap.children].forEach((dot, dotIndex) => {
+          dot.classList.toggle("active", dotIndex === index);
+        });
+      }
+    };
+
+    const goToSlide = (newIndex) => {
+      index = (newIndex + slides.length) % slides.length;
+      updateCarousel();
+    };
+
+    const nextSlide = () => goToSlide(index + 1);
+    const prevSlide = () => goToSlide(index - 1);
+
+    const renderDots = () => {
+      if (!dotsWrap) return;
+
+      dotsWrap.innerHTML = "";
+      slides.forEach((_, dotIndex) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Go to slide ${dotIndex + 1}`);
+        dot.className = dotIndex === index ? "active" : "";
+        dot.addEventListener("click", () => {
+          goToSlide(dotIndex);
+          restartAutoplay();
+        });
+        dotsWrap.appendChild(dot);
+      });
+    };
+
+    const startAutoplay = () => {
+      if (prefersReducedMotion || slides.length <= 1) return;
+      timer = window.setInterval(nextSlide, 6500);
+    };
+
+    const stopAutoplay = () => {
+      if (timer) window.clearInterval(timer);
+      timer = null;
+    };
+
+    const restartAutoplay = () => {
+      stopAutoplay();
+      startAutoplay();
+    };
+
+    renderDots();
+    updateCarousel();
+    startAutoplay();
+
+    prevBtn?.addEventListener("click", () => {
+      prevSlide();
+      restartAutoplay();
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      nextSlide();
+      restartAutoplay();
+    });
+
+    carouselRoot.addEventListener("mouseenter", stopAutoplay);
+    carouselRoot.addEventListener("mouseleave", startAutoplay);
+    carouselRoot.addEventListener("focusin", stopAutoplay);
+    carouselRoot.addEventListener("focusout", startAutoplay);
+
+    window.addEventListener("keydown", (e) => {
+      const isFocusedInsideCarousel = document.activeElement?.closest?.("[data-carousel]") != null;
+      if (!carouselRoot.matches(":hover") && !isFocusedInsideCarousel) return;
+
+      if (e.key === "ArrowLeft") {
+        prevSlide();
+        restartAutoplay();
+      }
+
+      if (e.key === "ArrowRight") {
+        nextSlide();
+        restartAutoplay();
+      }
+    });
+  }
 
   const chartBaseOptions = {
     responsive: true,
@@ -215,15 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         ],
       },
-      options: {
-        ...chartBaseOptions,
-        plugins: {
-          ...chartBaseOptions.plugins,
-          legend: {
-            labels: { color: "#d6e1ea" },
-          },
-        },
-      },
+      options: chartBaseOptions,
     });
   }
 
@@ -301,60 +380,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  const sendContact = async (payload) => {
-    const response = await fetch("/api/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    });
+  const showToast = (message, type = "success") => {
+    if (!toast || !toastIcon || !toastMessage) return;
 
-    if (!response.ok) {
-      const text = await response.text().catch(() => "");
-      throw new Error(text || "Failed to send message.");
-    }
+    toastMessage.textContent = message;
+    toast.classList.remove("success", "error", "hidden");
+    toast.classList.add(type);
 
-    return response.json().catch(() => ({}));
+    toastIcon.className =
+      type === "success"
+        ? "fa-solid fa-circle-check"
+        : "fa-solid fa-circle-exclamation";
+
+    requestAnimationFrame(() => toast.classList.add("show"));
+
+    clearTimeout(showToast._timer);
+    showToast._timer = setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => toast.classList.add("hidden"), 280);
+    }, 3500);
   };
 
+  const setContactButtonLoading = (isLoading) => {
+    if (!contactSubmitBtn) return;
+
+    const icon = contactSubmitBtn.querySelector("i");
+    const text = contactSubmitBtn.querySelector("span");
+
+    contactSubmitBtn.disabled = isLoading;
+    contactSubmitBtn.classList.toggle("is-loading", isLoading);
+    contactSubmitBtn.setAttribute("aria-busy", String(isLoading));
+
+    if (icon) {
+      icon.className = isLoading
+        ? "fa-solid fa-spinner fa-spin"
+        : "fa-solid fa-paper-plane";
+    }
+
+    if (text) {
+      text.textContent = isLoading ? "Sending..." : "Send Message";
+    }
+  };
+
+  if (typeof emailjs === "undefined") {
+    console.warn("EmailJS SDK not loaded.");
+    if (formStatus) {
+      formStatus.textContent = "Email service unavailable.";
+      formStatus.style.color = "#fca5a5";
+    }
+  } else {
+    emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+  }
   if (contactForm) {
     contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const payload = {
-        name: document.getElementById("name").value.trim(),
-        email: document.getElementById("email").value.trim(),
-        subject: document.getElementById("subject").value.trim(),
-        message: document.getElementById("message").value.trim(),
-      };
-
-      if (!payload.name || !payload.email || !payload.subject || !payload.message) {
-        formStatus.textContent = "Please complete all fields.";
-        formStatus.style.color = "#fca5a5";
+      if (typeof emailjs === "undefined") {
+        showToast("Email service is not available.", "error");
         return;
       }
-
       try {
-        submitBtn.disabled = true;
-        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-        formStatus.textContent = "Sending message...";
-        formStatus.style.color = "#9eb0c2";
+        setContactButtonLoading(true);
 
-        await sendContact(payload);
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
 
         contactForm.reset();
-        formStatus.textContent = "Message sent successfully.";
-        formStatus.style.color = "#86efac";
+        showToast("Message sent successfully.", "success");
       } catch (error) {
-        formStatus.textContent =
-          "Message could not be sent yet. Connect the /api/contact endpoint or plug in EmailJS.";
-        formStatus.style.color = "#fca5a5";
-        console.error(error);
+        console.error("EmailJS error:", error);
+        showToast("Failed to send message. Please try again.", "error");
       } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+        setContactButtonLoading(false);
       }
     });
   }
