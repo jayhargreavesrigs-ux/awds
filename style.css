@@ -258,6 +258,9 @@ textarea {
 
 .hero-copy {
   max-width: 1040px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .hero-grid-clean {
