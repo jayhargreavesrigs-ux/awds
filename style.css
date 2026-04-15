@@ -32,8 +32,16 @@ body {
   font-family: "Inter", sans-serif;
   background:
     radial-gradient(circle at top, rgba(245, 158, 11, 0.12), transparent 26%),
-    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.1), transparent 26%),
-    radial-gradient(circle at 18% 18%, rgba(245, 158, 11, 0.06), transparent 18%),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(59, 130, 246, 0.1),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at 18% 18%,
+      rgba(245, 158, 11, 0.06),
+      transparent 18%
+    ),
     linear-gradient(180deg, #05101a 0%, #09131d 40%, #071018 100%);
   color: var(--text);
   line-height: 1.68;
@@ -238,12 +246,13 @@ textarea {
   gap: 18px;
 }
 
-.hero-grid, .one-col {
+.hero-grid,
+.one-col {
   grid-template-columns: 1fr;
   align-items: center;
 }
 
-.one-col p{
+.one-col p {
   font-size: 1.1rem;
 }
 
@@ -262,7 +271,11 @@ textarea {
   width: 160px;
   height: 160px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.14), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(245, 158, 11, 0.14),
+    transparent 70%
+  );
   filter: blur(10px);
   pointer-events: none;
 }
@@ -364,13 +377,17 @@ textarea {
 .leader-card,
 .gallery-card,
 .carousel-shell {
-  background: linear-gradient(180deg, rgba(15, 24, 35, 0.98), rgba(12, 20, 30, 0.96));
+  background: linear-gradient(
+    180deg,
+    rgba(15, 24, 35, 0.98),
+    rgba(12, 20, 30, 0.96)
+  );
   border: 1px solid var(--line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
-.panel{
+.panel {
   margin-bottom: 1%;
 }
 
@@ -391,7 +408,11 @@ textarea {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 38%);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    transparent 38%
+  );
   pointer-events: none;
 }
 
@@ -440,13 +461,19 @@ textarea {
 .glass-panel,
 .accent-panel {
   background:
-    radial-gradient(circle at top right, rgba(245, 158, 11, 0.12), transparent 32%),
+    radial-gradient(
+      circle at top right,
+      rgba(245, 158, 11, 0.12),
+      transparent 32%
+    ),
     linear-gradient(180deg, rgba(15, 24, 35, 0.98), rgba(10, 18, 27, 0.96));
 }
 
 .accent-panel {
   border: 1px solid rgba(245, 158, 11, 0.24);
-  box-shadow: 0 24px 64px rgba(245, 158, 11, 0.08), var(--shadow);
+  box-shadow:
+    0 24px 64px rgba(245, 158, 11, 0.08),
+    var(--shadow);
 }
 
 .accent-panel::before,
@@ -455,7 +482,12 @@ textarea {
   position: absolute;
   inset: 0 0 auto 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-2), transparent);
+  background: linear-gradient(
+    90deg,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
 }
 
 .hero-panel-top {
@@ -774,7 +806,11 @@ blockquote {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
-  background: linear-gradient(180deg, rgba(12, 18, 26, 0.65), rgba(12, 18, 26, 0.95));
+  background: linear-gradient(
+    180deg,
+    rgba(12, 18, 26, 0.65),
+    rgba(12, 18, 26, 0.95)
+  );
 }
 
 .carousel-slide img {
@@ -791,7 +827,11 @@ blockquote {
   bottom: 18px;
   padding: 18px;
   border-radius: 18px;
-  background: linear-gradient(180deg, rgba(8, 13, 20, 0.62), rgba(8, 13, 20, 0.9));
+  background: linear-gradient(
+    180deg,
+    rgba(8, 13, 20, 0.62),
+    rgba(8, 13, 20, 0.9)
+  );
   border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(8px);
 }
@@ -888,7 +928,11 @@ blockquote {
   justify-content: space-between;
   gap: 18px;
   padding: 22px;
-  background: linear-gradient(180deg, rgba(15, 24, 35, 0.98), rgba(10, 18, 27, 0.96));
+  background: linear-gradient(
+    180deg,
+    rgba(15, 24, 35, 0.98),
+    rgba(10, 18, 27, 0.96)
+  );
   border-bottom: 1px solid var(--line);
 }
 
@@ -1062,7 +1106,7 @@ textarea:focus {
   visibility: visible;
 }
 
-.cards-4{
+.cards-4 {
   margin-bottom: 1%;
 }
 

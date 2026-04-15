@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const toastIcon = document.getElementById("toastIcon");
   const toastMessage = document.getElementById("toastMessage");
 
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
   const EMAILJS_SERVICE_ID = "YOUR_SERVICE_ID";
   const EMAILJS_TEMPLATE_ID = "YOUR_TEMPLATE_ID";
@@ -32,7 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const step = (now) => {
       const progress = Math.min((now - startTime) / duration, 1);
-      const value = Math.floor(start + (target - start) * easeOutCubic(progress));
+      const value = Math.floor(
+        start + (target - start) * easeOutCubic(progress),
+      );
       el.textContent = value >= 100 ? `${value}+` : `${value}`;
 
       if (progress < 1) {
@@ -49,34 +53,38 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!scrollGauge) return;
 
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const height =
+      document.documentElement.scrollHeight -
+      document.documentElement.clientHeight;
     const progress = height > 0 ? (scrollTop / height) * 100 : 0;
     scrollGauge.style.width = `${progress}%`;
   };
 
   const setActiveNav = () => {
-  const navSectionIds = Array.from(navLinks)
-    .map((link) => link.getAttribute("href"))
-    .filter((href) => href && href.startsWith("#"))
-    .map((href) => href.slice(1));
+    const navSectionIds = Array.from(navLinks)
+      .map((link) => link.getAttribute("href"))
+      .filter((href) => href && href.startsWith("#"))
+      .map((href) => href.slice(1));
 
-  let currentId = navSectionIds[0] || "";
+    let currentId = navSectionIds[0] || "";
 
-  navSectionIds.forEach((id) => {
-    const section = document.getElementById(id);
-    if (!section) return;
+    navSectionIds.forEach((id) => {
+      const section = document.getElementById(id);
+      if (!section) return;
 
-    const top = section.offsetTop - 140;
-    if (window.scrollY >= top) {
-      currentId = id;
-    }
-  });
+      const top = section.offsetTop - 140;
+      if (window.scrollY >= top) {
+        currentId = id;
+      }
+    });
 
-  navLinks.forEach((link) => {
-    link.classList.toggle("active", link.getAttribute("href") === `#${currentId}`);
-  });
-};
-
+    navLinks.forEach((link) => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === `#${currentId}`,
+      );
+    });
+  };
 
   const observer = new IntersectionObserver(
     (entries) => {
@@ -92,14 +100,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       });
     },
-    { threshold: 0.14 }
+    { threshold: 0.14 },
   );
 
   revealEls.forEach((el) => observer.observe(el));
 
   const smoothScrollTo = (target) => {
     const offset = 84;
-    const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+    const top =
+      target.getBoundingClientRect().top + window.pageYOffset - offset;
 
     window.scrollTo({
       top,
@@ -235,7 +244,8 @@ document.addEventListener("DOMContentLoaded", () => {
     carouselRoot.addEventListener("focusout", startAutoplay);
 
     window.addEventListener("keydown", (e) => {
-      const isFocusedInsideCarousel = document.activeElement?.closest?.("[data-carousel]") != null;
+      const isFocusedInsideCarousel =
+        document.activeElement?.closest?.("[data-carousel]") != null;
       if (!carouselRoot.matches(":hover") && !isFocusedInsideCarousel) return;
 
       if (e.key === "ArrowLeft") {
@@ -286,7 +296,13 @@ document.addEventListener("DOMContentLoaded", () => {
     new Chart(afeCtx, {
       type: "bar",
       data: {
-        labels: ["Rig & Spread", "Drilling Services", "Completion Equipment", "Logistics & Marine", "Contingency"],
+        labels: [
+          "Rig & Spread",
+          "Drilling Services",
+          "Completion Equipment",
+          "Logistics & Marine",
+          "Contingency",
+        ],
         datasets: [
           {
             label: "AFE Budget",
@@ -311,7 +327,13 @@ document.addEventListener("DOMContentLoaded", () => {
     new Chart(costMixCtx, {
       type: "doughnut",
       data: {
-        labels: ["Rig & Spread", "Drilling Services", "Completion Equipment", "Logistics & Marine", "Contingency"],
+        labels: [
+          "Rig & Spread",
+          "Drilling Services",
+          "Completion Equipment",
+          "Logistics & Marine",
+          "Contingency",
+        ],
         datasets: [
           {
             data: [2800000, 1500000, 1200000, 600000, 610000],
@@ -349,7 +371,13 @@ document.addEventListener("DOMContentLoaded", () => {
     new Chart(nptCtx, {
       type: "bar",
       data: {
-        labels: ["DWOP Alignment", "Rig-Site Authority", "Vendor KPIs", "Fishing Readiness", "Sand Control QA/QC"],
+        labels: [
+          "DWOP Alignment",
+          "Rig-Site Authority",
+          "Vendor KPIs",
+          "Fishing Readiness",
+          "Sand Control QA/QC",
+        ],
         datasets: [
           {
             label: "Operational Focus",
@@ -442,7 +470,11 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         setContactButtonLoading(true);
 
-        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+        await emailjs.sendForm(
+          EMAILJS_SERVICE_ID,
+          EMAILJS_TEMPLATE_ID,
+          contactForm,
+        );
 
         contactForm.reset();
         showToast("Message sent successfully.", "success");
