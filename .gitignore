@@ -1,0 +1,9 @@
+.DS_Store
+.research/
+well pictures/
+.sites-runtime/
+node_modules/
+*.tar.gz
+*.zip
+.env
+.env.*

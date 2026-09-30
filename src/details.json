@@ -1,0 +1,62 @@
+{
+  "drilling": {
+    "kicker": "01 / Drilling engineering",
+    "title": "A STRONG WELL STARTS WITH SOUND ENGINEERING.",
+    "body": "<p>Execution-ready programmes connect the subsurface, well architecture and rig operations. Axis designs each well around its reservoir objectives, operating environment and risk profile.</p><ul><li>Well trajectory, casing design and geomechanics</li><li>Torque and drag modelling, hydraulics and equivalent circulating density management</li><li>Casing and tubing load-case verification</li><li>Drilling-on-paper workshops and contingency planning</li><li>Authorization for expenditure (AFE) development and cost control</li></ul>"
+  },
+  "completions": {
+    "kicker": "02 / Completions & sand control",
+    "title": "ENGINEERED FOR SUSTAINED PRODUCTION.",
+    "body": "<p>We develop completion systems that connect the reservoir to production while maintaining well integrity and controlling sand.</p><ul><li>Single- and dual-string completion architecture</li><li>Formation-specific gravel pack and frac pack design</li><li>Tubing design, barrier management and verification</li><li>Artificial lift integration and production readiness</li><li>Installation QA/QC and post-completion performance monitoring</li></ul>"
+  },
+  "intervention": {
+    "kicker": "03 / Well intervention",
+    "title": "RESTORE PERFORMANCE. EXTEND ASSET LIFE.",
+    "body": "<p>Axis plans and coordinates interventions around well condition, production objectives and operational constraints, with particular focus on marginal and brownfield assets.</p><ul><li>Slickline and electric-line operations</li><li>Coiled tubing and nitrogen services coordination</li><li>Well diagnostics, remediation and integrity reviews</li><li>Re-entry, workover and fishing contingency planning</li><li>Controlled unloading and flowback monitoring</li></ul>"
+  },
+  "integrated": {
+    "kicker": "04 / Integrated well delivery",
+    "title": "ONE PLAN. ONE ACCOUNTABLE PARTNER.",
+    "body": "<p>From concept through production, our integrated project management model brings engineering, contractors, rig operations and commercial control under a coordinated delivery team.</p><ul><li>Full lifecycle planning and technical programme ownership</li><li>Rig and service vendor integration</li><li>Cost, schedule and non-productive time management</li><li>Marine, logistics, regulatory and community coordination</li><li>Production activation and ongoing performance support</li></ul><h3>COMMERCIAL FLEXIBILITY</h3><p>Engagements can be structured as lump-sum turnkey, day rate with incentives, performance-based delivery or defined engineering consultancy. Scope, assumptions and responsibilities are agreed up front.</p>"
+  },
+  "production": {
+    "kicker": "05 / Production optimization",
+    "title": "UNLOCK MORE FROM THE ASSET.",
+    "body": "<p>We combine reservoir understanding with well and surface-system analysis to identify practical opportunities for production improvement.</p><ul><li>Inflow and vertical lift performance modelling</li><li>Nodal analysis and integrated production modelling</li><li>Production forecasting and decline-curve analysis</li><li>Artificial lift readiness and facility integration</li><li>Continuous monitoring, sand control reviews and intervention planning</li></ul>"
+  },
+  "integrity": {
+    "kicker": "06 / Well integrity, QA/QC & asset reliability",
+    "title": "VERIFY READINESS. PROTECT RELIABILITY.",
+    "body": "<p>Our risk-based assurance approach follows equipment from acceptance and verification into operational service, aligned with relevant API, ISO and IADC frameworks.</p><ul><li><strong>Rig acceptance:</strong> critical systems, BOP and well control equipment, lifting equipment and operational readiness</li><li><strong>Tubular integrity:</strong> drill pipe, casing, tubing, connections, material traceability and bottom-hole assembly checks</li><li><strong>QA/QC surveillance:</strong> inspection plans, vendor audits, factory acceptance and system integration testing</li><li><strong>Non-destructive testing:</strong> ultrasonic, magnetic particle, penetrant and radiographic inspection</li><li><strong>Pressure and load testing:</strong> wellheads, valves, flowlines and lifting equipment</li><li><strong>Reliability:</strong> failure analysis, maintenance planning and digital equipment performance reporting</li></ul>"
+  },
+  "technology": {
+    "kicker": "Technical capability / commercial discipline",
+    "title": "BETTER INFORMATION. CLEARER DECISIONS.",
+    "body": "<h3>ENGINEERING & DIGITAL TOOLS</h3><p>Well design uses Landmark tools, WellCAT-based engineering, torque and drag analysis and casing verification. Reservoir and subsurface work includes Petrel, Eclipse and integrated production modelling. Softedge Analytics’ Borestack supports operational data capture and reporting.</p><h3>COST & NON-PRODUCTIVE TIME</h3><p>Pre-job alignment, decision authority at the rig site and accountable vendor performance help control avoidable downtime. AFE tracking compares actual spend with budget, while documented contingency plans address stuck pipe, sand control and other critical execution risks.</p><h3>CONTRACTS ALIGNED TO THE PROJECT</h3><p>Turnkey, day-rate with incentives, performance-based and consultancy models allow delivery responsibilities to match the project’s scope and commercial objectives.</p>"
+  },
+  "swamp": {
+    "kicker": "Case study / Swamp asset, Nigeria",
+    "title": "A COMPLETE PATH TO PRODUCTION.",
+    "body": "<p>A swamp appraisal and development well was drilled to approximately 7,100 ft using the SDF BR-301 swamp rig. Drilling, casing, evaluation and completion took 75.20 days, excluding rig move.</p><h3>ENGINEERED ACTIVATION</h3><ul><li>Controlled fluid displacement to protect the formation</li><li>Nitrogen lifting to initiate flow through the heavy oil column</li><li>Gradual pressure drawdown to manage sand risk</li><li>Real-time flowback monitoring and well-test stabilization</li><li>Integrated coiled tubing, nitrogen, marine and security coordination</li></ul><h3>RECORDED PROJECT OUTCOMES</h3><p>162,420 manhours worked, with zero lost-time incidents, zero accidents and zero spills. A structured cleanup and unloading programme supported the transition from well construction to production activation.</p>"
+  },
+  "land": {
+    "kicker": "Case study / Land asset, Niger Delta",
+    "title": "BRINGING LEGACY POTENTIAL INTO PRODUCTION.",
+    "body": "<p>The programme combined re-entry planning for a 1979 legacy well with new-well drilling and dual-string completions to access multiple reservoir zones.</p><h3>THE ENGINEERING CHALLENGE</h3><p>Legacy well uncertainty, sand production risk, dual-zone integrity and multi-vendor interfaces required a coordinated technical and execution plan.</p><ul><li>Re-entry assessment with documented contingencies</li><li>Formation-tailored gravel pack design and installation QA/QC</li><li>Long-string and short-string completion architecture</li><li>Drilling-on-paper alignment and coordinated SLB / Weatherford execution</li></ul><h3>THE OUTCOME</h3><p>Successful delivery across both completion strings, with multi-zone reservoir access and controlled sand production.</p>"
+  },
+  "fdp": {
+    "kicker": "Case study / Field development planning",
+    "title": "FROM SUBSURFACE DATA TO A DEVELOPMENT ROADMAP.",
+    "body": "<h3>PETROKINETICS ENERGY / NIGERIA</h3><p>Reservoir characterization, trajectory planning, completion design, production forecasting and cost development supported a marginal field development plan. The scope included NUPRC submissions, alternative development scenarios, sand control strategy and a phased execution approach.</p><h3>OLIVE ENERGY / REPUBLIC OF CONGO</h3><p>A cross-border field development and well engineering programme covered reservoir review, resource assessment, trajectory and casing design, completion and sand management, facility concepts and economic modelling. Execution planning accounted for local logistics and regulatory timelines.</p>"
+  },
+  "rigs": {
+    "kicker": "Case study / Rig inspections & selection",
+    "title": "RIG READINESS, VERIFIED BEFORE MOBILIZATION.",
+    "body": "<p>Five rig inspections across Nigeria and the United States assessed equipment condition, well control, reliability and suitability for planned operations.</p><ul><li><strong>Jewel Quest:</strong> 3,000 HP swamp barge, New Iberia, Louisiana</li><li><strong>Acme Rig 7:</strong> 2,000 HP land rig, Conroe, Texas</li><li><strong>Melcurt Rig 1:</strong> 1,500 HP land rig, Okpaka, Delta State; selected for Emohua-1 re-entry</li><li><strong>MF101 (Matpatson):</strong> 2,000 HP land rig, Port Harcourt; selected for Emohua-2 and sidetrack</li><li><strong>Acme Rig 5:</strong> 2,000 HP land rig, Maiduguri</li></ul><p>Two inspected rigs were selected for the field drilling campaign. Inspection work focused on critical-system fitness, failure risks and alignment with well objectives.</p>"
+  },
+  "offshore": {
+    "kicker": "Case study / Offshore marginal asset",
+    "title": "COMPLEX RESERVOIRS. EXECUTION-READY ENGINEERING.",
+    "body": "<p>A three-zone development well required a well architecture and completion design that could accommodate significant overpressure in the deepest zone.</p><ul><li>Full casing architecture, liner design and load-case checks</li><li>Torque and drag analysis for liner rotation during cementing</li><li>Cementing programme and spacer optimization</li><li>Dual-string completion architecture</li><li>Two-barrier philosophy with pressure tests, leak-off validation and safety-valve verification</li><li>Directional targeting and a detailed engineering risk register</li></ul><p>The resulting well programme addressed pressure containment, cement integrity, connection torque limits and ongoing annulus monitoring.</p>"
+  }
+}
