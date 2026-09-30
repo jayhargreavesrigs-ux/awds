@@ -33,12 +33,12 @@ There are 18 content pages plus a dedicated 404 document. Each page has its own 
 - `src/styles.css`: visual theme, responsive layouts and page styles.
 - `src/app.js`: mobile navigation, scroll animations, counters and enquiry draft handling.
 - `scripts/build-site.mjs`: shared header, navigation, page layouts and static generation.
-- `public/assets/`: optimized field photography, company logo and downloadable profile.
+- `public/assets/`: optimized field photography and company logo.
 - `dist/`: generated deployable output; rebuild after editing source content.
 
 ## Contact details
 
-Hilary Chukwu’s direct contact email is `hchukwu@axiswelldelivery.com`. General enquiries and the enquiry draft recipient use `info@axiswelldelivery.com`; this is also the intended recipient when EmailJS is connected. The downloadable company profile retains the general contact email.
+Hilary Chukwu’s direct contact email is `hchukwu@axiswelldelivery.com` and his phone number is `+234 906 264 9504`. General enquiries and the enquiry draft recipient use `info@axiswelldelivery.com`; this is also the intended recipient when EmailJS is connected.
 
 The enquiry form validates inputs and opens an email draft. It does not send mail automatically. The old website’s EmailJS settings were placeholders; a real delivery service must be configured before changing the button to “Send”.
 
@@ -46,7 +46,7 @@ The enquiry form validates inputs and opens an email draft. It does not send mai
 
 Company services, other leadership profiles, reported metrics and case studies were adapted from https://www.axiswelldelivery.com/ on 17 September 2026. Hilary Chukwu’s biography was replaced with the exact wording supplied by the user. Figures are company-reported information, not independently audited.
 
-Field photography comes from the user’s `well pictures/` directory. Land and swamp case-study collages retain their original project associations. The source photographs are untouched. The original downloadable profile was retained, with both contact email addresses updated and the contact page visually checked.
+Field photography comes from the user’s `well pictures/` directory. Land and swamp case-study collages retain their original project associations. The source photographs are untouched. Company-profile download links and the public PDF were removed at the user’s request.
 
 ## Verification
 

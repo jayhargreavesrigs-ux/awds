@@ -110,7 +110,6 @@
   .button:hover{transform:translateY(-3px);box-shadow:0 9px 22px #08192124}
   .button:hover:before{transform:translateX(390%) skewX(-18deg)}
   .button:hover>span,.text-link:hover>span,.service-card:hover .service-arrow{transform:translate(3px,-3px)}
-  .text-link[download]:hover>span{transform:translateY(3px)}
   .service-card:hover,.project-card:hover{translate:0 -5px;box-shadow:0 18px 35px #0c26351a}
   .project-image:hover .project-image-arrow{background:var(--navy);color:white}
   .project-list>a:hover,.additional-services>a:hover,.detail-sidebar nav>a:hover{padding-left:8px}
