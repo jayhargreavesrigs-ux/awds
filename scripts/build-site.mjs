@@ -4,10 +4,18 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+// GitHub project sites use /awds; custom domains and local previews use /.
+const basePath = (process.env.SITE_BASE_PATH || '').replace(/\/+$/, '');
+if (basePath && (!/^(?:\/[A-Za-z0-9._-]+)+$/.test(basePath) || basePath.split('/').some(part => part === '.' || part === '..'))) {
+  throw new Error('SITE_BASE_PATH must be a URL path such as /awds, or empty for a root domain.');
+}
 const read = path => readFileSync(resolve(root, path), 'utf8');
 const write = (path, content) => {
   const target = resolve(root, 'dist', path);
   mkdirSync(dirname(target), { recursive: true });
+  if (basePath && path.endsWith('.html')) {
+    content = content.replace(/\b(href|src|action)="\/(?!\/)/g, (_, attribute) => `${attribute}="${basePath}/`);
+  }
   writeFileSync(target, content);
 };
 const escape = value => String(value).replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');

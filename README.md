@@ -6,6 +6,14 @@ A responsive, industrial, multi-page website. Each route is a standalone HTML do
 
 Run `node scripts/build-site.mjs` from the project directory to generate the site. No package installation is needed. Preview with `python3 -m http.server 4173 --bind 127.0.0.1 --directory dist` and open `http://127.0.0.1:4173/`.
 
+## GitHub Pages
+
+The company repository is `jayhargreavesrigs-ux/awds`. In its **Settings → Pages**, set the publishing source to **GitHub Actions**. The `Publish Axis website` workflow builds and publishes only `dist` after a push to `main`; it can also be run manually from the **Actions** tab. No personal access token is stored in the workflow.
+
+The workflow reads the site's path from GitHub Pages settings. Links and assets use `/awds` for the GitHub project address, or the domain root when a custom domain is connected. Local builds use the root by default. To generate a project-path build manually, run `SITE_BASE_PATH=/awds node scripts/build-site.mjs`; run the normal build again before using the usual local preview.
+
+After changing the Pages custom domain, rerun `Publish Axis website` so the generated links match the new address. A custom domain must be released from the old repository before assigning it to this repository.
+
 ## Main pages
 
 - `/`: focused homepage with links into the site.
@@ -45,5 +53,3 @@ Field photography comes from the user’s `well pictures/` directory. Land and s
 Motion includes staggered headline and card entrances, photograph reveals, count-up figures, interactive button and card details, and brief page transitions in supporting browsers. These are dependency-free enhancements; navigation still loads separate HTML documents. Reduced-motion preferences disable the effects, and content remains available without JavaScript. Animations run once rather than looping, and keyboard focus cancels any entrance that could obscure a control.
 
 All 18 routes load directly. Checked internal links and asset references, one main heading per page, removal of outdated biography and email text, standalone service navigation, mobile menu behavior, desktop and mobile layout, and required contact fields. No test email was sent.
-
-The Sites registration is in `.openai/hosting.json`.
