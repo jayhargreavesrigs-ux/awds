@@ -74,7 +74,8 @@
 .stats strong .stat-number{font:inherit;color:inherit}
 .button{position:relative;isolation:isolate;overflow:hidden}
 .button:before{content:'';position:absolute;inset:-20% auto -20% 0;width:36%;background:linear-gradient(90deg,transparent,#ffffff32,transparent);pointer-events:none;transform:translateX(-220%) skewX(-18deg)}
-.button>span,.text-link>span,.service-arrow,.project-image-arrow{display:inline-block}
+.icon{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.125em;pointer-events:none}
+.button>span,.text-link>span,.service-arrow{display:inline-flex;align-items:center;justify-content:center}
 @keyframes axis-title-in{from{transform:translateY(110%)}to{transform:translateY(0)}}
 @keyframes axis-rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
 @keyframes axis-image-settle{from{transform:scale(1.055)}to{transform:scale(1)}}

@@ -10,9 +10,23 @@ if (basePath && (!/^(?:\/[A-Za-z0-9._-]+)+$/.test(basePath) || basePath.split('/
   throw new Error('SITE_BASE_PATH must be a URL path such as /awds, or empty for a root domain.');
 }
 const read = path => readFileSync(resolve(root, path), 'utf8');
+const iconPaths = {
+  'arrow-up-right': 'M7 17 17 7M7 7h10v10',
+  'arrow-down': 'M12 5v14M5 12l7 7 7-7',
+  'arrow-up': 'M12 19V5M5 12l7-7 7 7',
+  'arrow-left': 'M19 12H5M12 5l-7 7 7 7',
+};
+// Inline SVG keeps decorative arrows independent of each device’s emoji fonts.
+function renderIcons(html) {
+  return html.replace(/<!-- ICON:([a-z-]+) -->/g, (_, name) => {
+    if (!iconPaths[name]) throw new Error(`Unknown icon: ${name}`);
+    return `<svg class="icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="${iconPaths[name]}"/></svg>`;
+  });
+}
 const write = (path, content) => {
   const target = resolve(root, 'dist', path);
   mkdirSync(dirname(target), { recursive: true });
+  if (path.endsWith('.html')) content = renderIcons(content);
   if (basePath && path.endsWith('.html')) {
     content = content.replace(/\b(href|src|action)="\/(?!\/)/g, (_, attribute) => `${attribute}="${basePath}/`);
   }
@@ -60,11 +74,11 @@ const baseHead = read('src/head.html')
   .replace('src="app.js"', `src="/app.js?v=${revision}"`);
 function header(active) {
   return `<a class="skip-link" href="#main">Skip to content</a>
-  <div class="utility-bar"><div class="container"><span>INDIGENOUS EXPERTISE. INTERNATIONAL STANDARDS.</span><a href="mailto:info@axiswelldelivery.com">info@axiswelldelivery.com <span aria-hidden="true">↗</span></a></div></div>
+  <div class="utility-bar"><div class="container"><span>INDIGENOUS EXPERTISE. INTERNATIONAL STANDARDS.</span><a href="mailto:info@axiswelldelivery.com">info@axiswelldelivery.com <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a></div></div>
   <header class="site-header"><div class="container nav-wrap">
   <a class="brand" href="/" aria-label="Axis Well Delivery home"><img src="/assets/axis-logo.png" alt="Axis Well Delivery Systems" width="220" height="84"></a>
   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
-  <nav id="navigation" aria-label="Main navigation">${mainLinks.map(([url, name]) => `<a href="${url}"${url === active ? ' aria-current="page"' : ''}${url === '/contact/' ? ' class="button button-orange nav-cta"' : ''}>${name}${url === '/contact/' ? ' <span aria-hidden="true">↗</span>' : ''}</a>`).join('')}</nav>
+  <nav id="navigation" aria-label="Main navigation">${mainLinks.map(([url, name]) => `<a href="${url}"${url === active ? ' aria-current="page"' : ''}${url === '/contact/' ? ' class="button button-orange nav-cta"' : ''}>${name}${url === '/contact/' ? ' <span aria-hidden="true"><!-- ICON:arrow-up-right --></span>' : ''}</a>`).join('')}</nav>
   </div></header>`;
 }
 const footer = links(read('src/footer.html')).replace('href="/">Back to top', 'href="#top">Back to top');
@@ -75,7 +89,7 @@ function hero({ label, title, description = '', image = 'hero', parent = null, k
   return `<section class="page-hero${image ? '' : ' page-hero-plain'}">${image ? `<img class="page-hero-image" src="/assets/${image}.webp" alt="" width="1200" height="900" fetchpriority="high">` : ''}<div class="container page-hero-content">${breadcrumb(label, parent)}${kicker ? `<p class="eyebrow light"><span></span>${escape(kicker)}</p>` : ''}<h1>${title}</h1>${description ? `<p class="page-intro">${description}</p>` : ''}</div></section>`;
 }
 function cta() {
-  return `<section class="cta-band"><div class="container"><div><p class="eyebrow light"><span></span> LET’S TALK ABOUT YOUR PROJECT</p><h2>YOUR NEXT WELL.<br>OUR SHARED AMBITION.</h2></div><a class="button button-orange" href="/contact/">Talk to our team <span aria-hidden="true">↗</span></a></div></section>`;
+  return `<section class="cta-band"><div class="container"><div><p class="eyebrow light"><span></span> LET’S TALK ABOUT YOUR PROJECT</p><h2>YOUR NEXT WELL.<br>OUR SHARED AMBITION.</h2></div><a class="button button-orange" href="/contact/">Talk to our team <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a></div></section>`;
 }
 function animateHeadings(html) {
   return html.replace(/(<h1\b[^>]*>)([\s\S]*?)(<\/h1>)/g, (_, open, title, close) => {
@@ -92,9 +106,9 @@ function page(path, { title, description, active, content, image = null }) {
   pageCount++;
 }
 
-let homeAbout = section('about').replace('<!-- ABOUT_LINK -->', '<a class="text-link" href="/about/">Get to know Axis <span aria-hidden="true">↗</span></a>');
-let homeServices = section('services').replace(/<div class="additional-services">[\s\S]*?<\/div>/, '<div class="section-action"><a class="text-link" href="/services/">View all our services <span aria-hidden="true">↗</span></a></div>');
-const homeExperience = `<section class="home-experience section"><div class="container"><div><p class="eyebrow"><span></span> EXPERIENCE THAT DELIVERS</p><h2>ON LAND. IN THE SWAMP.<br>ACROSS THE WATER.</h2><p>Explore the engineering and delivery experience behind our work — from legacy well re-entry to complex offshore development.</p><a class="text-link" href="/experience/">Explore our experience <span aria-hidden="true">↗</span></a></div><img src="/assets/offshore.webp" alt="An elevated view of the working deck of an offshore rig" width="1200" height="900" loading="lazy"></div></section>`;
+let homeAbout = section('about').replace('<!-- ABOUT_LINK -->', '<a class="text-link" href="/about/">Get to know Axis <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a>');
+let homeServices = section('services').replace(/<div class="additional-services">[\s\S]*?<\/div>/, '<div class="section-action"><a class="text-link" href="/services/">View all our services <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a></div>');
+const homeExperience = `<section class="home-experience section"><div class="container"><div><p class="eyebrow"><span></span> EXPERIENCE THAT DELIVERS</p><h2>ON LAND. IN THE SWAMP.<br>ACROSS THE WATER.</h2><p>Explore the engineering and delivery experience behind our work — from legacy well re-entry to complex offshore development.</p><a class="text-link" href="/experience/">Explore our experience <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a></div><img src="/assets/offshore.webp" alt="An elevated view of the working deck of an offshore rig" width="1200" height="900" loading="lazy"></div></section>`;
 page('', { title: 'Engineered Right. Creating Value.', description: 'Integrated well delivery, drilling engineering, completions and intervention. Nigerian expertise and global standards, from concept to production.', active: '/', image: 'hero', content: section('home').replace('href="/about/" aria-label="Scroll to discover Axis"', 'href="#about" aria-label="Scroll to discover Axis"') + section('stats') + homeAbout + homeServices + homeExperience + cta() });
 page('about', { title: 'About us & leadership', description: 'Meet Axis Well Delivery Systems and its leadership, combining commercial strategy, executive leadership and technical well-delivery expertise.', active: '/about/', image: 'team', content: hero({ label: 'About us', title: 'LOCAL ROOTS.<br>GLOBAL AMBITION.', description: 'An indigenous Nigerian company with the expertise, relationships and resolve to turn subsurface potential into producing assets.', image: 'team', kicker: 'THIS IS AXIS' }) + section('about') + section('leadership').replace('<details>', '<details open>') + section('partners') + cta() });
 page('services', { title: 'Our expertise & services', description: 'Explore integrated well delivery, drilling engineering, completions, intervention, production optimization and well integrity services from Axis.', active: '/services/', image: 'completions', content: hero({ label: 'Our expertise', title: 'EXPERTISE THAT<br>GOES DEEPER.', description: 'Connected engineering and field execution, across every phase of the well lifecycle.', image: 'completions', kicker: 'OUR SERVICES' }) + section('services') + section('approach') + cta() });
@@ -107,14 +121,14 @@ for (const [key, [path, name, image, kicker]] of Object.entries(routes)) {
   const data = details[key];
   const isService = path.startsWith('services/');
   const parent = isService ? ['/services/', 'Our expertise'] : ['/experience/', 'Our experience'];
-  const siblingLinks = Object.entries(routes).filter(([, route]) => route[0].startsWith(isService ? 'services/' : 'experience/')).map(([siblingKey, [siblingPath, siblingName]]) => `<a href="/${siblingPath}/"${siblingKey === key ? ' aria-current="page"' : ''}>${escape(siblingName)}<span aria-hidden="true">↗</span></a>`).join('');
+  const siblingLinks = Object.entries(routes).filter(([, route]) => route[0].startsWith(isService ? 'services/' : 'experience/')).map(([siblingKey, [siblingPath, siblingName]]) => `<a href="/${siblingPath}/"${siblingKey === key ? ' aria-current="page"' : ''}>${escape(siblingName)}<span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a>`).join('');
   const detailBody = data.body.replaceAll('<h3>', '<h2>').replaceAll('</h3>', '</h2>');
-  const article = `<section class="section detail-section"><div class="container detail-layout"><article class="detail-article"><p class="eyebrow"><span></span>${escape(data.kicker)}</p><h2 class="article-title">${escape(data.title)}</h2>${detailBody}<a class="text-link" href="${parent[0]}">← Back to ${parent[1].toLowerCase()}</a></article><aside class="detail-sidebar"><h2>${isService ? 'OUR EXPERTISE' : 'MORE EXPERIENCE'}</h2><nav aria-label="${isService ? 'Services' : 'Case studies'}">${siblingLinks}</nav><div class="sidebar-contact"><h3>LET’S TALK.</h3><p>Discuss your technical or commercial requirements with our team.</p><a href="/contact/" class="button button-orange">Contact Axis <span aria-hidden="true">↗</span></a><a class="sidebar-email" href="mailto:info@axiswelldelivery.com">info@axiswelldelivery.com</a></div></aside></div></section>`;
+  const article = `<section class="section detail-section"><div class="container detail-layout"><article class="detail-article"><p class="eyebrow"><span></span>${escape(data.kicker)}</p><h2 class="article-title">${escape(data.title)}</h2>${detailBody}<a class="text-link" href="${parent[0]}"><!-- ICON:arrow-left --> Back to ${parent[1].toLowerCase()}</a></article><aside class="detail-sidebar"><h2>${isService ? 'OUR EXPERTISE' : 'MORE EXPERIENCE'}</h2><nav aria-label="${isService ? 'Services' : 'Case studies'}">${siblingLinks}</nav><div class="sidebar-contact"><h3>LET’S TALK.</h3><p>Discuss your technical or commercial requirements with our team.</p><a href="/contact/" class="button button-orange">Contact Axis <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a><a class="sidebar-email" href="mailto:info@axiswelldelivery.com">info@axiswelldelivery.com</a></div></aside></div></section>`;
   page(path, { title: name, description: data.body.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 155), active: parent[0], image, content: hero({ label: name, title: escape(name).toUpperCase(), image, parent, kicker }) + article + cta() });
 }
 
 // A real 404 document prevents a static host from treating unknown paths as a single-page app.
-const notFound = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | Axis Well Delivery</title><link rel="stylesheet" href="/styles.css?v=${revision}"></head><body id="top">${header('')}<main id="main">${hero({ label: 'Page not found', title: 'PAGE NOT FOUND.', description: 'The page may have moved. Explore our services or return to the homepage.', image: null })}<div class="container section"><a class="button button-orange" href="/">Return to home <span aria-hidden="true">↗</span></a></div></main>${footer}<script src="/app.js?v=${revision}" defer></script></body></html>`;
+const notFound = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found | Axis Well Delivery</title><link rel="stylesheet" href="/styles.css?v=${revision}"></head><body id="top">${header('')}<main id="main">${hero({ label: 'Page not found', title: 'PAGE NOT FOUND.', description: 'The page may have moved. Explore our services or return to the homepage.', image: null })}<div class="container section"><a class="button button-orange" href="/">Return to home <span aria-hidden="true"><!-- ICON:arrow-up-right --></span></a></div></main>${footer}<script src="/app.js?v=${revision}" defer></script></body></html>`;
 write('404.html', notFound);
 write('styles.css', css);
 write('app.js', script);

@@ -32,7 +32,7 @@ There are 18 content pages plus a dedicated 404 document. Each page has its own 
 - `src/head.html`, `src/footer.html`: shared metadata template and footer.
 - `src/styles.css`: visual theme, responsive layouts and page styles.
 - `src/app.js`: mobile navigation, scroll animations, counters and enquiry draft handling.
-- `scripts/build-site.mjs`: shared header, navigation, page layouts and static generation.
+- `scripts/build-site.mjs`: shared header, navigation, page layouts and static generation. Decorative `<!-- ICON:arrow-up-right -->` placeholders (also `arrow-down`, `arrow-up`, and `arrow-left`) render as inline SVG so phones do not substitute emoji.
 - `public/assets/`: optimized field photography and company logo.
 - `dist/`: generated deployable output; rebuild after editing source content.
 
