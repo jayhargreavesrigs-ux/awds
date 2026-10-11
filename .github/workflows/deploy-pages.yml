@@ -34,10 +34,18 @@ jobs:
         id: pages
         uses: actions/configure-pages@v6.0.0
 
+      - name: Install the pinned Academy client
+        run: npm ci --ignore-scripts
+
       - name: Build the website
         env:
           SITE_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          AWDS_SUPABASE_URL: ${{ vars.AWDS_SUPABASE_URL }}
+          AWDS_SUPABASE_PUBLIC_KEY: ${{ vars.AWDS_SUPABASE_PUBLIC_KEY }}
         run: node scripts/build-site.mjs
+
+      - name: Check Academy course content and startup
+        run: npm test
 
       - name: Upload the website
         uses: actions/upload-pages-artifact@v5.0.0

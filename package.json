@@ -1,0 +1,18 @@
+{
+  "name": "awds-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Axis Well Delivery website and AWDS Academy",
+  "scripts": {
+    "build": "node scripts/build-site.mjs",
+    "test": "node scripts/check-academy.mjs && node scripts/check-academy-boot.mjs && node scripts/check-academy-flows.mjs",
+    "check:connection": "node scripts/check-academy-connection.mjs"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.3"
+  },
+  "devDependencies": {
+    "jsdom": "^30.1.2"
+  }
+}

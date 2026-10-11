@@ -4,8 +4,23 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+// Use the SDK version pinned by package-lock.json for every deployment.
+const supabaseSdk = readFileSync(resolve(root, 'node_modules/@supabase/supabase-js/dist/umd/supabase.js'), 'utf8');
+const supabaseLicense = readFileSync(resolve(root, 'node_modules/@supabase/supabase-js/LICENSE'), 'utf8');
 // GitHub project sites use /awds; custom domains and local previews use /.
 const basePath = (process.env.SITE_BASE_PATH || '').replace(/\/+$/, '');
+const academyUrl = (process.env.AWDS_SUPABASE_URL || process.env.NEXT_PUBLIC_SUPABASE_URL || '').trim();
+const academyKey = (process.env.AWDS_SUPABASE_PUBLIC_KEY || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '').trim();
+if (!!academyUrl !== !!academyKey) throw new Error('Set both AWDS_SUPABASE_URL and AWDS_SUPABASE_PUBLIC_KEY.');
+if (academyUrl) {
+  const url = new URL(academyUrl);
+  if (url.protocol !== 'https:' || url.username || url.password || url.search || url.hash || url.pathname !== '/') throw new Error('AWDS_SUPABASE_URL must be an HTTPS project origin.');
+  let publicKey = /^sb_publishable_[A-Za-z0-9_-]+$/.test(academyKey);
+  if (academyKey.startsWith('eyJ')) {
+    try { publicKey = JSON.parse(Buffer.from(academyKey.split('.')[1], 'base64url')).role === 'anon'; } catch { publicKey = false; }
+  }
+  if (!publicKey) throw new Error('Use a Supabase publishable key or legacy anon key. Secret/service-role keys must never be published.');
+}
 if (basePath && (!/^(?:\/[A-Za-z0-9._-]+)+$/.test(basePath) || basePath.split('/').some(part => part === '.' || part === '..'))) {
   throw new Error('SITE_BASE_PATH must be a URL path such as /awds, or empty for a root domain.');
 }
@@ -49,8 +64,8 @@ const routes = {
   offshore: ['experience/offshore-well-engineering', 'Offshore well engineering', 'offshore', 'COMPLEX MULTI-ZONE WELL DESIGN'],
 };
 const mainLinks = [
-  ['/', 'Home'], ['/about/', 'About us'], ['/services/', 'Our expertise'],
-  ['/experience/', 'Our experience'], ['/hse-quality/', 'HSE & quality'], ['/contact/', 'Contact us'],
+  ['/', 'Home'], ['/about/', 'About Us'], ['/services/', 'Our Expertise'],
+  ['/experience/', 'Our Experience'], ['/hse-quality/', 'HSE & Quality'], ['/academy/', 'AWDS Academy'], ['/contact/', 'Contact Us'],
 ];
 const anchorRoutes = { home: '/', about: '/about/', services: '/services/', projects: '/experience/', commitment: '/hse-quality/', leadership: '/about/#leadership', contact: '/contact/', approach: '/services/#approach' };
 function links(html) {
@@ -78,7 +93,7 @@ function header(active) {
   <header class="site-header"><div class="container nav-wrap">
   <a class="brand" href="/" aria-label="Axis Well Delivery home"><img src="/assets/axis-logo.png" alt="Axis Well Delivery Systems" width="220" height="84"></a>
   <button class="menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation"><span></span><span></span></button>
-  <nav id="navigation" aria-label="Main navigation">${mainLinks.map(([url, name]) => `<a href="${url}"${url === active ? ' aria-current="page"' : ''}${url === '/contact/' ? ' class="button button-orange nav-cta"' : ''}>${name}${url === '/contact/' ? ' <span aria-hidden="true"><!-- ICON:arrow-up-right --></span>' : ''}</a>`).join('')}</nav>
+  <nav id="navigation" aria-label="Main navigation">${mainLinks.map(([url, name]) => `<a href="${url}"${url === active ? ' aria-current="page"' : ''}${url === '/academy/' ? ' target="_blank" rel="noopener noreferrer" aria-label="AWDS Academy (opens in a new tab)"' : ''}${url === '/contact/' ? ' class="button button-orange nav-cta"' : ''}>${name}${url === '/contact/' ? ' <span aria-hidden="true"><!-- ICON:arrow-up-right --></span>' : ''}</a>`).join('')}</nav>
   </div></header>`;
 }
 const footer = links(read('src/footer.html')).replace('href="/">Back to top', 'href="#top">Back to top');
@@ -133,4 +148,14 @@ write('404.html', notFound);
 write('styles.css', css);
 write('app.js', script);
 cpSync(resolve(root, 'public/assets'), resolve(root, 'dist/assets'), { recursive: true });
-console.log(`Generated ${pageCount} standalone HTML pages and a 404 page.`);
+// Publish the browser files only; database setup and PHP files stay out of Pages.
+for (const file of ['index.html', 'academy.js', 'awds-backend.js', 'config.js', 'boot.js']) {
+  const contents = file === 'config.js' && academyUrl
+    ? `window.AWDS_CONFIG = ${JSON.stringify({ backend: 'supabase', supabaseUrl: academyUrl, supabaseAnonKey: academyKey, pollSeconds: 20 })};\nwindow.AWDS_CONFIG.courseUrl = new URL('.', location.href).href;\n`
+    : read(`src/academy/${file}`);
+  write(`academy/${file}`, contents);
+}
+write('academy/vendor/supabase.js', supabaseSdk);
+write('academy/vendor/supabase-LICENSE.txt', supabaseLicense);
+cpSync(resolve(root, 'public/academy/audio'), resolve(root, 'dist/academy/audio'), { recursive: true });
+console.log(`Generated ${pageCount} company pages, the academy, and a 404 page.`);
